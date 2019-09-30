@@ -101,6 +101,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4436057728671970}
+  - component: {fileID: 114130419715788928}
   m_Layer: 0
   m_Name: Desktop
   m_TagString: Untagged
@@ -128,7 +129,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1977331248759950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.6142793, y: 1.4554375, z: -0.009822542}
+  m_LocalPosition: {x: 3.11, y: 1.42, z: -0.009822542}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4867006394400204}
@@ -241,6 +242,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9401214, y: 0.73798275}
   m_EdgeRadius: 0
+--- !u!114 &114130419715788928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977331248759950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e026c9a79857164dbd73fd27184d3b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  principais:
+    health: 0
+    maxHealth: 0
+    stamina: 0
+    maxStamina: 0
+    speed: 0
+    maxSpeed: 0
+    facedRight: 0
+  combatStats:
+    damageRemaining: 0
+    attackPower: 0
+    defense: 0
+  team:
+    player: 0
+    team1: 0
+    team2: 0
+  collision:
+    collision: 1
 --- !u!212 &212151922662164802
 SpriteRenderer:
   m_ObjectHideFlags: 1

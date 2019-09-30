@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Hud.cs" />
     <Compile Include="Assets\Scripts\OrderSpriteRender.cs" />
     <Compile Include="Assets\Scripts\personagens\Actions.cs" />
+    <Compile Include="Assets\Scripts\personagens\Cartão Perfurado\cartaoPerfuradoCollision.cs" />
     <Compile Include="Assets\Scripts\personagens\Cartão Perfurado\CartaoPerfuradoController.cs" />
     <Compile Include="Assets\Scripts\personagens\Cartão Perfurado\Jump.cs" />
     <Compile Include="Assets\Scripts\personagens\Datas.cs" />
@@ -73,10 +74,10 @@
     <Compile Include="Assets\Scripts\personagens\Tambor de Memoria\Tambor.cs" />
     <Compile Include="Assets\Scripts\SceneController.cs" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/Leandro/Documents/Create Games/Memory Evolution/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/Leandro/Documents/GitHub/Memory_Evolution/Memory Evolution/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/Leandro/Documents/Create Games/Memory Evolution/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/Leandro/Documents/GitHub/Memory_Evolution/Memory Evolution/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4698647276681264}
+  - component: {fileID: 114933402611603286}
   m_Layer: 0
   m_Name: folhas
   m_TagString: Untagged
@@ -49,8 +50,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1179982479518922}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.012, y: 1.514, z: -0.07818493}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.4881363, y: 2.087673, z: 3.8704379}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4723752477087678}
@@ -95,6 +96,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114933402611603286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1179982479518922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e026c9a79857164dbd73fd27184d3b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  principais:
+    health: 0
+    maxHealth: 0
+    stamina: 0
+    maxStamina: 0
+    speed: 0
+    maxSpeed: 0
+    facedRight: 0
+  combatStats:
+    damageRemaining: 0
+    attackPower: 0
+    defense: 0
+  team:
+    player: 0
+    team1: 0
+    team2: 0
+  collision:
+    collision: 1
 --- !u!212 &212942589145889090
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -131,7 +161,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4298cd2b39e07a14ea135d87044383cc, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9839705, b: 0.9292453, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

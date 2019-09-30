@@ -7,6 +7,7 @@ public class Datas : MonoBehaviour
     public Principais principais;
     public CombatStats combatStats;
     public Team team;
+    public Collision collision;
 
     [System.Serializable]
     public class Principais
@@ -35,6 +36,13 @@ public class Datas : MonoBehaviour
         public bool team1;
         public bool team2;
     }
+
+    [System.Serializable]
+    public class Collision
+    {
+        public bool collision = true;
+    }
+
 
     void Update()
     {

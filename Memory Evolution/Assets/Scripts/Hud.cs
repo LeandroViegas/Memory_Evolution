@@ -15,11 +15,15 @@ public class Hud : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
-        if (Player.GetComponent<Datas>().principais.health > 0)
-            Vida.transform.localScale = new Vector2(Player.GetComponent<Datas>().principais.health / 100, transform.localScale.y);
+        if (Player != null)
+        {
+            if (Player.GetComponent<Datas>().principais.health > 0)
+                Vida.transform.localScale = new Vector2(Player.GetComponent<Datas>().principais.health / 100, transform.localScale.y);
+            else
+                Vida.transform.localScale = new Vector2(0 / 100, transform.localScale.y);
+            LifeText.GetComponent<UnityEngine.UI.Text>().text = Player.GetComponent<Datas>().principais.health.ToString();
+        }
         else
-            Vida.transform.localScale = new Vector2(0 / 100, transform.localScale.y);
-        LifeText.GetComponent<UnityEngine.UI.Text>().text = Player.GetComponent<Datas>().principais.health.ToString();
+            Debug.Log("Player é nulo");
     }
 }

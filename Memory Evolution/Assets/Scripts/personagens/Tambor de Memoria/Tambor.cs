@@ -51,4 +51,29 @@ public class Tambor : MonoBehaviour {
         Instantiate(esplosao,transform.position,transform.rotation);
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Datas>() != null)
+            if (collision.GetComponent<Datas>().team.team1 == true)
+            {
+                explosion = true;
+                Enemy = collision.gameObject;
+            }
+                
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Datas>() != null)
+            if (collision.GetComponent<Datas>().team.team1 == true)
+                Enemy = collision.gameObject;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Datas>() != null)
+            if (collision.GetComponent<Datas>().team.team1 == true)
+                Enemy = null;
+    }
 }

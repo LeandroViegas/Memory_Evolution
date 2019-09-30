@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public GameObject magePrefab;
     public float bulletVelocity = 20f;
     public Datas dados;
+    public float atackRemaining;
+
     void Start()
     {
         dados = GetComponent<Datas>();
@@ -19,6 +21,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GetComponent<Datas>().principais.stamina > 0)
+            GetComponent<Datas>().principais.stamina -= Time.deltaTime;
         if(dados.combatStats.damageRemaining > 0f)
             dados.combatStats.damageRemaining -= Time.deltaTime;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
@@ -57,8 +61,12 @@ public class PlayerController : MonoBehaviour
             SR.flipX = true;
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && GetComponent<Datas>().principais.stamina <= 0)
+        {
             Atack();
+            GetComponent<Datas>().principais.stamina = 0.5f;
+        }
+           
         LifeManager();
     }
 
@@ -70,6 +78,13 @@ public class PlayerController : MonoBehaviour
             Barra.localScale = new Vector2(0, Barra.localScale.y);
         if(dados.principais.health >= dados.principais.maxHealth)
             Barra.localScale = new Vector2(1, Barra.localScale.y);
+
+        Transform Stamina = transform.Find("Stamina");
+        Stamina.localScale = new Vector2(dados.principais.stamina / dados.principais.maxStamina, Barra.localScale.y);
+        if (dados.principais.stamina <= 0)
+            Stamina.localScale = new Vector2(0, Barra.localScale.y);
+        if (dados.principais.stamina >= dados.principais.maxHealth)
+            Stamina.localScale = new Vector2(1, Barra.localScale.y);
     }
 
 

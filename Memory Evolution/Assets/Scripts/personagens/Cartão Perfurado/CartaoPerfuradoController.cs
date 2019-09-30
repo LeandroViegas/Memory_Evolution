@@ -18,8 +18,8 @@ public class CartaoPerfuradoController : MonoBehaviour
     public GameObject Enemy = null;
 
     // Walk Variables
-    bool wallCollision = false;
-    float speed = 4f;
+    public bool wallCollision = false;
+    float speed = 8f;
     float TimerToWalk = 5f;
     Vector3 MyPosition;
     Vector3 MyDestination;
@@ -28,7 +28,7 @@ public class CartaoPerfuradoController : MonoBehaviour
 
     void Start()
     {
-        dados = GetComponent<Datas>();
+        dados = transform.Find("Sprite").GetComponent<Datas>();
         rg2d = GetComponent<Rigidbody2D>();
     }
 
@@ -37,14 +37,15 @@ public class CartaoPerfuradoController : MonoBehaviour
     {
         if (!AlertAtack)
         {
-            GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-            if (!wallCollision)
-                rg2d.MovePosition(Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), MyDestination, Time.deltaTime * speed));
             if (wallCollision)
             {
                 DestinationGenerator();
                 wallCollision = false;
             }
+            GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            if (!wallCollision)
+                rg2d.MovePosition(Vector2.MoveTowards(new Vector2(transform.position.x, transform.position.y), MyDestination, Time.deltaTime * speed));
+
             if (TimerToWalk <= 0)
             {
                 DestinationGenerator();
@@ -79,7 +80,7 @@ public class CartaoPerfuradoController : MonoBehaviour
         
         if (dados.combatStats.damageRemaining <= 0)
         {
-            dados.combatStats.damageRemaining = 4;
+            dados.combatStats.damageRemaining = 2;
             if (Vector2.Distance(Enemy.transform.position, transform.position) <= 5)
             {
                 atackInicialPosition = transform.position;
@@ -92,7 +93,11 @@ public class CartaoPerfuradoController : MonoBehaviour
         {
             transform.Translate(directionVector * 15F * Time.deltaTime);
             if (Vector2.Distance(atackInicialPosition, transform.position) >= 4.5f || wallCollision)
+            {
                 inAtack = false;
+                wallCollision = false;
+            }
+                
         }
         else
             rg2d.MovePosition(Vector2.MoveTowards(transform.position, Enemy.transform.position, Time.deltaTime * 2f));
@@ -106,5 +111,25 @@ public class CartaoPerfuradoController : MonoBehaviour
             Barra.localScale = new Vector2(0, Barra.localScale.y);
         if (dados.principais.health >= 100)
             Barra.localScale = new Vector2(1, Barra.localScale.y);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Datas>() != null)
+            if (collision.GetComponent<Datas>().team.team1 == true)
+                Enemy = collision.gameObject;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Datas>() != null)
+        {
+            if (!collision.gameObject.GetComponent<Datas>().collision.collision)
+                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
+            else
+                wallCollision = true;
+        } 
+        if (collision.gameObject.GetComponent<CartaoPerfuradoController>() != null)
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
     }
 }
