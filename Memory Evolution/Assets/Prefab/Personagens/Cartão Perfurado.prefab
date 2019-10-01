@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114018160678926856}
   - component: {fileID: 114927639980411676}
   - component: {fileID: 114967267734559480}
+  - component: {fileID: 114468505213711496}
   - component: {fileID: 61683637745131748}
   m_Layer: 0
   m_Name: Sprite
@@ -377,6 +378,17 @@ MonoBehaviour:
     team2: 1
   collision:
     collision: 1
+--- !u!114 &114468505213711496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1048660293723546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1ec4fb71196544fa6a5d205ec1881a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114481935523678038
 MonoBehaviour:
   m_ObjectHideFlags: 1

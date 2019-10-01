@@ -19,7 +19,7 @@ public class cartaoPerfuradoCollision : MonoBehaviour {
         if (collision.gameObject.GetComponent<Datas>() != null)
             if (!collision.gameObject.GetComponent<Datas>().collision.collision)
                 Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
-        if(collision.gameObject.GetComponent<Collider2D>() != null)
+        if(collision.gameObject.GetComponent<cartaoPerfuradoCollision>() != null)
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
     }
 }
