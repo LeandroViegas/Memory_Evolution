@@ -1164,7 +1164,7 @@ Tilemap:
 Transform:
   m_PrefabParentObject: {fileID: 4693529920439156, guid: dc8f40ea6a0f648428a0f1080ff064ad,
     type: 2}
-  m_PrefabInternal: {fileID: 1738381162}
+  m_PrefabInternal: {fileID: 1672085745}
 --- !u!4 &826343674 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4036980530012306, guid: b802b49cc3817da4e8ea2fbaa6d372af,
@@ -1223,7 +1223,7 @@ GameObject:
   - component: {fileID: 1108196231}
   - component: {fileID: 1108196230}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: disparadorDeFala
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4166,7 +4166,7 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
---- !u!1001 &1738381162
+--- !u!1001 &1672085745
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2

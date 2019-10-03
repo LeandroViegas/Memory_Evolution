@@ -4,16 +4,9 @@ using UnityEngine;
 
 public class EntradaController : MonoBehaviour {
 
-    public class Falas{
-        public string personagem;
-        public string fala;
-    }
-
-    public Falas[] falas;
     // Use this for initialization
-	void Start () {
-        falas[0].personagem = "izuna";
-        falas[0].fala = "Bom dia meu caro";
+    void Start () {
+         
     }
 	
 	// Update is called once per frame
@@ -22,9 +15,10 @@ public class EntradaController : MonoBehaviour {
 
 	}
 
-    public void Falar(int fala)
+    public void SolicitarFala(int fala)
     {
+        string[] falas = { "Depois de duas horas de trabalho duro, foi muito bom eu tomar um copo de água." };
         if (!FindObjectOfType<talks>().falando)
-            FindObjectOfType<talks>().Falar(falas[fala].fala);
+            FindObjectOfType<talks>().Falar(falas[fala]);
     }
 }

@@ -16,6 +16,6 @@ public class scti : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        FindObjectOfType<EntradaController>().Falar(1);
+        FindObjectOfType<EntradaController>().SolicitarFala(0);
     }
 }
