@@ -10,58 +10,63 @@ public class talks : MonoBehaviour
     public bool animTop = false;
     public bool falando = false;
     float pos = 0;
-    public GameObject txt;
+
     public GameObject textures;
-    float eixoY = 0f;
+    public GameObject screen;
+    float eixoY = 3f;
 
     // Use this for initialization
     void Start()
     {
-
+        eixoY = screen.transform.lossyScale.y - textures.transform.lossyScale.y;
+        Debug.Log(eixoY);
     }
 
     // Up4date is called once per frame
     void Update()
     {
-        if (falando && frase != null)
+        if (falando && eixoY >= 0)
             if (frase.Length >= 0)
             {
                 if (Convert.ToInt32(pos) < frase.Length)
                 {
                     pos += Time.deltaTime * 40f;
-                    txt.GetComponent<UnityEngine.UI.Text>().text = frase.ToString().Substring(0, Convert.ToInt32(pos));
+                    gameObject.GetComponent<UnityEngine.UI.Text>().text = frase.ToString().Substring(0, Convert.ToInt32(pos));
                 }
                 else
                 {
                     falando = false;
                     StartCoroutine(animBottom(2));
                 }
-
-                
             }
+        
         if (animTop)
-            if (eixoY <= 0)
+            if (eixoY <= screen.transform.lossyScale.y)
                 eixoY += Time.deltaTime * 5f;
         if (!animTop)
-            if (eixoY >= -2.3f)
+            if (eixoY >=  screen.transform.lossyScale.y - textures.transform.lossyScale.y)
                 eixoY -= Time.deltaTime * 5f;
-        if (eixoY >= 0)
-            falando = true;
-        textures.transform.localPosition = new Vector2(0f, eixoY);
+
+        textures.transform.localPosition = new Vector2(textures.transform.lossyScale.x - screen.transform.lossyScale.x, eixoY);
+        if (eixoY < 0 && !animTop)
+        {
+            gameObject.GetComponent<UnityEngine.UI.Text>().text = "";
+            falando = false;
+        }
     }
 
     public void Falar(string fala)
     {
         frase = fala;
         animTop = true;
+        falando = true;
     }
 
     IEnumerator animBottom(int time)
     {
         yield return new WaitForSeconds(time);
         pos = 0;
-        txt.GetComponent<UnityEngine.UI.Text>().text = "";
+        gameObject.GetComponent<UnityEngine.UI.Text>().text = "";
         animTop = false;
-
     }
 }
