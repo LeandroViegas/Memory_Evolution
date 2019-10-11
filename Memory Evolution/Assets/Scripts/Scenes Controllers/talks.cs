@@ -10,16 +10,17 @@ public class talks : MonoBehaviour
     public bool animTop = false;
     public bool falando = false;
     float pos = 0;
-
-    public GameObject textures;
-    public GameObject screen;
-    float eixoY = 3f;
+    float eixoY;
+    float height;
+    public GameObject biggest;
+    public float smallest;
+    public GameObject texture;
 
     // Use this for initialization
     void Start()
     {
-        eixoY = screen.transform.lossyScale.y - textures.transform.lossyScale.y;
-        Debug.Log(eixoY);
+        height = biggest.transform.lossyScale.y;
+        eixoY = -1 * height;
     }
 
     // Up4date is called once per frame
@@ -41,13 +42,13 @@ public class talks : MonoBehaviour
             }
         
         if (animTop)
-            if (eixoY <= screen.transform.lossyScale.y)
+            if (eixoY <= 0)
                 eixoY += Time.deltaTime * 5f;
         if (!animTop)
-            if (eixoY >=  screen.transform.lossyScale.y - textures.transform.lossyScale.y)
+            if (eixoY >= -1 * height)
                 eixoY -= Time.deltaTime * 5f;
-
-        textures.transform.localPosition = new Vector2(textures.transform.lossyScale.x - screen.transform.lossyScale.x, eixoY);
+        texture.transform.localPosition = new Vector2(0, eixoY);
+        Debug.Log(texture.transform.lossyScale.y);
         if (eixoY < 0 && !animTop)
         {
             gameObject.GetComponent<UnityEngine.UI.Text>().text = "";
