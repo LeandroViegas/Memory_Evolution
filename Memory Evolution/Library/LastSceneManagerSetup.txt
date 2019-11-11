@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Entrada.unity
+- path: Assets/Scenes/Rua.unity
   isLoaded: 1
   isActive: 1

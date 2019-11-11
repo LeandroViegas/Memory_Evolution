@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class doorScript : MonoBehaviour {
 
-    Animation animation_;
+    Animator animation_;
 	// Use this for initialization
 	void Start () {
-        animation_ = GetComponent<Animation>();
+        animation_ = GetComponent<Animator>();
         animation_.enabled = false;
     }
 	
@@ -16,19 +16,19 @@ public class doorScript : MonoBehaviour {
 	void Update () {
 		
 	}
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(FindObjectOfType<talks>().falas[1].talked > 0)
+        if (FindObjectOfType<talks>().falas[2].talked > 0)
         {
-            animation_.enabled = true;
+            SceneManager.LoadScene("Andar 1");
             ChangeScene();
-        }        
+            animation_.enabled = true;
+        }
     }
 
     IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(0.7f);
-        SceneManager.LoadScene("Andar 1");
+        
     }
 }
