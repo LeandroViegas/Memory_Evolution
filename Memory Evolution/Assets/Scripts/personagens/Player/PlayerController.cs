@@ -6,84 +6,93 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rg2d;
     Animator anim;
+    SpriteRenderer SR;
     public GameObject magePrefab;
+    public Datas datas;
+
     public float bulletVelocity = 20f;
-    public Datas dados;
     public float atackRemaining;
+    public bool inAtack = false;
 
     void Start()
     {
-        dados = GetComponent<Datas>();
+        datas = GetComponent<Datas>();
         rg2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        SR = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(GetComponent<Datas>().principais.stamina > 0)
+        if (GetComponent<Datas>().principais.stamina > 0)
             GetComponent<Datas>().principais.stamina -= Time.deltaTime;
-        if(dados.combatStats.damageRemaining > 0f)
-            dados.combatStats.damageRemaining -= Time.deltaTime;
+        if (datas.combatStats.damageRemaining > 0f)
+            datas.combatStats.damageRemaining -= Time.deltaTime;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-        
-        if (dados.principais.health <= 0)
+
+        if (datas.principais.health <= 0)
             Destroy(gameObject);
 
-        rg2d.MovePosition(new Vector2((Input.GetAxis("Horizontal") * dados.principais.speed * Time.deltaTime) + rg2d.position.x, (Input.GetAxis("Vertical") * dados.principais.speed * Time.deltaTime) + rg2d.position.y));
-
-        SpriteRenderer SR = GetComponent<SpriteRenderer>();
-
-        if(Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
-            anim.SetBool("walk", false);
-        else
-            anim.SetBool("walk", true);
-
-        if (Input.GetAxis("Vertical") != 0)
+        if (datas.principais.inControl)
         {
-            if (dados.principais.facedRight == false)
-                if (SR.flipX == true)
-                    SR.flipX = true;
-            if (dados.principais.facedRight == true)
-                if (SR.flipX == false)
+            rg2d.MovePosition(new Vector2((Input.GetAxis("Horizontal") * datas.principais.speed * Time.deltaTime) + rg2d.position.x, (Input.GetAxis("Vertical") * datas.principais.speed * Time.deltaTime) + rg2d.position.y));
+
+            if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
+                anim.SetBool("walk", false);
+            else
+                anim.SetBool("walk", true);
+
+            if (!inAtack)
+            {
+                if (Input.GetAxis("Vertical") != 0)
+                {
+                    if (datas.principais.facedRight == false)
+                        if (SR.flipX == true)
+                            SR.flipX = true;
+                    if (datas.principais.facedRight == true)
+                        if (SR.flipX == false)
+                            SR.flipX = false;
+                }
+
+                if (Input.GetAxis("Horizontal") > 0)
+                {
+                    datas.principais.facedRight = true;
                     SR.flipX = false;
+                }
+
+                if (Input.GetAxis("Horizontal") < 0)
+                {
+                    datas.principais.facedRight = false;
+                    SR.flipX = true;
+                }
+            }
+
+
+            if (Input.GetButtonDown("Fire1") && GetComponent<Datas>().principais.stamina <= 0 && datas.combatStats.atack)
+            {
+                Atack();
+                GetComponent<Datas>().principais.stamina = 0.5f;
+            }
         }
 
-        if (Input.GetAxis("Horizontal") > 0)
-        {
-            dados.principais.facedRight = true;
-            SR.flipX = false;
-        }
-
-        if (Input.GetAxis("Horizontal") < 0)
-        {
-            dados.principais.facedRight = false;
-            SR.flipX = true;
-        }
-
-        if (Input.GetButtonDown("Fire1") && GetComponent<Datas>().principais.stamina <= 0)
-        {
-            Atack();
-            GetComponent<Datas>().principais.stamina = 0.5f;
-        }
-           
         LifeManager();
     }
 
     void LifeManager()
     {
         Transform Barra = transform.Find("LifeBar").transform.Find("Barra");
-        Barra.localScale = new Vector2(dados.principais.health / dados.principais.maxHealth, Barra.localScale.y);
-        if (dados.principais.health <= 0)
+        Barra.localScale = new Vector2(datas.principais.health / datas.principais.maxHealth, Barra.localScale.y);
+        if (datas.principais.health <= 0)
             Barra.localScale = new Vector2(0, Barra.localScale.y);
-        if(dados.principais.health >= dados.principais.maxHealth)
+        if (datas.principais.health >= datas.principais.maxHealth)
             Barra.localScale = new Vector2(1, Barra.localScale.y);
 
         Transform Stamina = transform.Find("Stamina");
-        Stamina.localScale = new Vector2(dados.principais.stamina / dados.principais.maxStamina, Barra.localScale.y);
-        if (dados.principais.stamina <= 0)
+        Stamina.localScale = new Vector2(datas.principais.stamina / datas.principais.maxStamina, Barra.localScale.y);
+        if (datas.principais.stamina <= 0)
             Stamina.localScale = new Vector2(0, Barra.localScale.y);
-        if (dados.principais.stamina >= dados.principais.maxHealth)
+        if (datas.principais.stamina >= datas.principais.maxHealth)
             Stamina.localScale = new Vector2(1, Barra.localScale.y);
     }
 
@@ -91,28 +100,35 @@ public class PlayerController : MonoBehaviour
     void Atack()
     {
         anim.SetBool("atack", true);
-        StartCoroutine(Delay(10/10));   
+        inAtack = true;
+        datas.principais.inControl = false;
+        StartCoroutine(Delay());
     }
 
-    IEnumerator Delay(int time)
+    IEnumerator Delay()
     {
-        yield return new WaitForSeconds(0);
-        Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+        Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (worldMousePos.x > transform.position.x)
+            SR.flipX = false;
+        else
+            SR.flipX = true;
         Vector2 direction = (Vector2)((worldMousePos - transform.position));
         direction.Normalize();
 
-        if(magePrefab != null)
-        {
-            GameObject bullet = (GameObject)Instantiate(
-                                            magePrefab,
-                                            transform.position + (Vector3)(direction * 0.5f),
-                                            Quaternion.identity);
-            bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletVelocity;
-            Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<BoxCollider2D>());
-            Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<CapsuleCollider2D>());
-            Destroy(bullet, 1);
-        }
+        GameObject bullet = (GameObject)Instantiate(
+                                        magePrefab,
+                                        transform.position + (Vector3)(direction * 0.5f),
+                                        Quaternion.identity);
+        Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<BoxCollider2D>());
+        Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<CapsuleCollider2D>());
+        yield return new WaitForSeconds(0.3f);
+        Destroy(bullet, 0.8f);
         anim.SetBool("atack", false);
+        inAtack = false;
+        yield return new WaitForSeconds(0.3f);
+        datas.principais.inControl = true;
+        bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletVelocity;
+        bullet.GetComponent<BulletController>().available = true;
     }
 }

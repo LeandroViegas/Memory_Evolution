@@ -49,7 +49,7 @@ public class CartaoPerfuradoController : MonoBehaviour
             if (TimerToWalk <= 0)
             {
                 DestinationGenerator();
-                TimerToWalk = 5f;
+                TimerToWalk = Random.Range(4f, 6f);
             }
             TimerToWalk -= Time.deltaTime;
         }
@@ -80,7 +80,7 @@ public class CartaoPerfuradoController : MonoBehaviour
         
         if (dados.combatStats.damageRemaining <= 0)
         {
-            dados.combatStats.damageRemaining = 2;
+            dados.combatStats.damageRemaining = Random.Range(4f, 6f);
             if (Vector2.Distance(Enemy.transform.position, transform.position) <= 5)
             {
                 atackInicialPosition = transform.position;

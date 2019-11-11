@@ -51,7 +51,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1179982479518922}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.4881363, y: 2.087673, z: 3.8704379}
+  m_LocalPosition: {x: 12.841322, y: 0.4507034, z: -0.07818484}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4723752477087678}
@@ -115,6 +115,7 @@ MonoBehaviour:
     speed: 0
     maxSpeed: 0
     facedRight: 0
+    inControl: 1
   combatStats:
     damageRemaining: 0
     attackPower: 0
@@ -140,7 +141,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4ca99c683f2eadf419b8f4b83d9963e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

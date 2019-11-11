@@ -12,21 +12,23 @@ public class Datas : MonoBehaviour
     [System.Serializable]
     public class Principais
     {
-        public float health;
-        public float maxHealth;
-        public float stamina;
-        public float maxStamina;
-        public float speed;
-        public float maxSpeed;
+        public float health = 100;
+        public float maxHealth= 100;
+        public float stamina = 20;
+        public float maxStamina = 20;
+        public float speed = 5;
+        public float maxSpeed = 10;
         public bool facedRight;
+        public bool inControl = true;
     }
 
     [System.Serializable]
     public class CombatStats
     {
-        public float damageRemaining;
-        public float attackPower;
-        public float defense;
+        public bool atack = true; 
+        public float damageRemaining = 0;
+        public float attackPower = 20;
+        public float defense = 10;
     }
 
     [System.Serializable]
