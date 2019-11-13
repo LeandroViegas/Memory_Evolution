@@ -14,7 +14,7 @@ public class Jump : MonoBehaviour
     void Start()
     {
         Transform ParentT = GetComponentInParent<Transform>();
-        if (ParentT.Find("sombra").gameObject)
+        if (ParentT.Find("sombra"))
             sombra = ParentT.Find("sombra").gameObject;
     }
 

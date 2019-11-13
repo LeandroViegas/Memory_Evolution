@@ -81,51 +81,6 @@ public class talks : MonoBehaviour
             new Falas("então chegue até o fim com as três peças pois seu computador estará te esperando lá. ", 1, 0),  //26
             new Falas("entendeu agora verme humano? ", 1, 0),  //27
         };
-        /*
-         * PERSONAGEM:
-Huurr, Droga onde estou? depois daquele trovão vim parar aqui, como? 
-e por que ta tudo tão antigo?
-
-INTELIGÊNCIA:
-Olá, eu sou sheila e vou te ajudar nessa aventura 
-
-PERSONAGEM:
-Oque? que aventura? quem é você? onde estou?
-
-INTELIGÊNCIA:
-Calma, calmaaaa vou te explicar tudo, você se teletransportou para a década de 40 após do trovão que te atingiu. 	
-
-PERSONAGEM:
-Oqueee? mas por que isso aconteceu comigo?
-
-INTELIGÊNCIA:
-UÈÈÈ!!! como eu vou saber? irônia do destino sei la ou coisa parecida, n tem como explicar oque aconteceu eu só to aqui pra te ajudar...
-
-PERSONAGEM:
-Ata blz muuito obrigado!!!
-
-INTELIGÊNCIA:
-Por nada, entre naquele prédio e tente encontrar as peças que se perderam do seu computador para que então você possa sair daqui,
-a cada andar você encontrará varios inimigos diferentes, toma aqui está um poder mágico para que você possa se defender desses inimigos.
-
-PERSONAGEM:
-hahahaha, foda!!!
-
-INTELIGÊNCIA:
-Agora entre no prédio e la te darei mais informações sobre seus inimigos habilidades, força e tals só vai la men.
-
-"ANTES DELE ENTRAR NO PRÉDIO"
-
-PERSONAGEM:
-Espere só tem uma coisa que não entendi ainda, porque tenho que procurar peças de computador?
-
-INTELIGÊNCIA:
-Ai minha placa mãe é por isso que eu quero extermina a raça humana, taa vamo la, após o trovão ter atingido seu computador ele te teletransportou para cá
-e com isso algumas peças do seu computador vieram para cá também e essas peças estão dentro deste prédio e em décadas diferentes a cada andar as décadas mudam
-e seus inimigos também, eles vão ficando mais poderosos e mais difíceis de eliminar e são exatamente três peças e sem elas você não sai daqui por quê é preciso
-arrumar seu computador então chegue até o fim com as três peças pois seu computador estará te esperando lá, entendeu agora verme humano?
-
-PERSONAGEM: */
 
         toTalk = new int[100];
         for (int i = 0; i < toTalk.Length; i++)
@@ -158,6 +113,14 @@ PERSONAGEM: */
                         texto.text = frase.ToString().Substring(0, Convert.ToInt32(pos));
                         personagemImg.sprite = personagens[personagem].personagemPic;
                         personagemText.text = personagens[personagem].PersonagemName;
+                        if(Convert.ToInt32(pos) >= frase.Length - 2)
+                        {
+                            for (int i = 0; i < tempTalked.Length; i++)
+                                if (tempTalked[i] > -1)
+                                    falas[tempTalked[i]].talked += 1;
+                            for (int i = 0; i < tempTalked.Length; i++)
+                                tempTalked[i] = -1;
+                        }
                     }
                     else
                     {

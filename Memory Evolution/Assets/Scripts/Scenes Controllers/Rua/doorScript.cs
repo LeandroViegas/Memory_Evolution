@@ -29,6 +29,5 @@ public class doorScript : MonoBehaviour {
     IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(0.7f);
-        
     }
 }
