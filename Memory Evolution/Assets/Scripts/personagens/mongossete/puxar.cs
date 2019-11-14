@@ -7,12 +7,10 @@ public class puxar : MonoBehaviour
 
 
     public GameObject person;
-    public Animator animator;
     public bool add;
     // Use this for initialization
     void Start()
     {
-        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -20,7 +18,7 @@ public class puxar : MonoBehaviour
     {
         if (person)
         {
-            if (add)
+            if (person.transform.position.x > GetComponentInParent<Transform>().position.x)
             {
                 if (person.transform.position.x < transform.position.x + 2f)
                     person.transform.position = new Vector3(person.transform.position.x + (10f * Time.deltaTime), person.transform.position.y, person.transform.position.z);
@@ -30,7 +28,7 @@ public class puxar : MonoBehaviour
                     person = null;
                 }
             }
-            else
+            else if (!add)
             {
                 if (person.transform.position.x > transform.position.x - 2f)
                     person.transform.position = new Vector3(person.transform.position.x - (10f * Time.deltaTime), person.transform.position.y, person.transform.position.z);
@@ -41,12 +39,6 @@ public class puxar : MonoBehaviour
                 }
             }
         }
-
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-        {
-            gameObject.SetActive(false);
-            animator.enabled = false;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -55,7 +47,7 @@ public class puxar : MonoBehaviour
         {
             person = collision.gameObject;
             person.GetComponent<Datas>().principais.inControl = false;
-            if (person.transform.position.x > transform.position.x)
+            if (person.transform.position.x > GetComponentInParent<Transform>().position.x)
                 add = false;
         }
     }
@@ -66,13 +58,8 @@ public class puxar : MonoBehaviour
         {
             person = collision.gameObject;
             person.GetComponent<Datas>().principais.inControl = false;
-            if (person.transform.position.x > transform.position.x)
+            if (person.transform.position.x > GetComponentInParent<Transform>().position.x)
                 add = false;
         }
-    }
-
-    public void socar()
-    {
-        gameObject.SetActive(true);
     }
 }
