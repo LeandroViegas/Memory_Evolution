@@ -36,9 +36,12 @@ public class MongosseteController : MonoBehaviour
         {
             if (temporaryPuxe.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
+                if(temporaryPuxe.GetComponent<puxar>().person)
+                    temporaryPuxe.GetComponent<puxar>().person.GetComponent<Datas>().principais.inControl = true;
                 Destroy(temporaryPuxe);
                 temporaryPuxe = null;
                 temporarySoco = Instantiate(soco, transform);
+                if(Enemy)
                 if (Enemy.transform.position.x < transform.position.x)
                 {
                     temporarySoco.GetComponentInChildren<Transform>().localPosition = new Vector3(-1 * temporarySoco.transform.localPosition.x, temporarySoco.transform.localPosition.y, temporarySoco.transform.localPosition.z);
@@ -80,8 +83,24 @@ public class MongosseteController : MonoBehaviour
 
         }
 
+
         timeToAtack -= Time.deltaTime;
         TimerToWalk -= Time.deltaTime;
+        LifeManager();
+        if (dados.principais.health == 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void LifeManager()
+    {
+        Transform Barra = transform.Find("LifeBar").transform.Find("Barra");
+        Barra.localScale = new Vector2(dados.principais.health / 100, Barra.localScale.y);
+        if (dados.principais.health <= 0)
+            Barra.localScale = new Vector2(0, Barra.localScale.y);
+        if (dados.principais.health >= 100)
+            Barra.localScale = new Vector2(1, Barra.localScale.y);
     }
 
     public void Socar()
@@ -133,6 +152,7 @@ public class MongosseteController : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Datas>() != null)
         {
+            Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), collision.gameObject.GetComponent<Collider2D>());
             if (!collision.gameObject.GetComponent<Datas>().collision.collision)
                 Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
             else
