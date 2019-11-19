@@ -83,9 +83,11 @@
     <Compile Include="Assets\Scripts\Scenes Controllers\Rua\doorScript.cs" />
     <Compile Include="Assets\Scripts\Scenes Controllers\Rua\Falas.cs" />
     <Compile Include="Assets\Scripts\Usability\buttonClick.cs" />
+    <Compile Include="Assets\Scripts\Usability\Generator\CardGenerator.cs" />
+    <Compile Include="Assets\Scripts\Usability\Generator\ObjectGenerator.cs" />
+    <Compile Include="Assets\Scripts\Usability\Generator\RandomGenerator.cs" />
     <Compile Include="Assets\Scripts\Usability\life.cs" />
     <Compile Include="Assets\Scripts\Usability\piscarLuz.cs" />
-    <Compile Include="Assets\Scripts\Usability\RandomGenerator.cs" />
     <Compile Include="Assets\Scripts\Usability\talks.cs" />
     <Compile Include="Assets\Scripts\Usability\TalkTrigger.cs" />
     <Compile Include="Assets\Scripts\Usability\trovão.cs" />

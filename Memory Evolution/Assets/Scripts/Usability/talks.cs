@@ -81,7 +81,6 @@ public class talks : MonoBehaviour
             new Falas("então chegue até o fim com as três peças pois seu computador estará te esperando lá. ", 1, 0),  //26
             new Falas("entendeu agora verme humano? ", 1, 0),  //27
         };
-
         toTalk = new int[100];
         for (int i = 0; i < toTalk.Length; i++)
             toTalk[i] = -1;
