@@ -18,7 +18,8 @@ public class doorScript : MonoBehaviour {
 	}
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (FindObjectOfType<talks>().falas[2].talked > 0)
+        if(collision.GetComponent<Datas>())
+        if (FindObjectOfType<talks>().falas[27].talked > 0 && collision.GetComponent<Datas>().team.player)
         {
             SceneManager.LoadScene("Andar 1");
             ChangeScene();

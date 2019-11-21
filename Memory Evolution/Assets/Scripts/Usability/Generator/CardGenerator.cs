@@ -10,7 +10,7 @@ public class CardGenerator : MonoBehaviour {
     float timer = 2f;
     int maxCards = 10;
     int generatedCards = 0;
-    int vivo = 0;
+    public int vivo = 0;
     // Use this for initialization
 	void Start () {
         cards = new GameObject[maxCards];

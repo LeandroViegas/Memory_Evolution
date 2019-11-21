@@ -55,7 +55,7 @@ public class talks : MonoBehaviour
             new Falas("Depois de duas horas de trabalho foi muito bom tomar esse copo de água.  ", 0, 0), //0
             new Falas("Bom, melhor voltar ao trabalho  ", 0, 0), //1
             new Falas("Huurr, Droga onde estou? depois daquele trovão vim parar aqui, como?  ", 0, 0), //2
-            new Falas("E por que ta tudo tão antigo?  ", 0, 0), //3
+            new Falas("E por quê está tudo tão antigo?  ", 0, 0), //3
             new Falas("Olá, eu sou sheila e vou te ajudar nessa aventura  ", 1, 0),  //4
             new Falas("O que? que aventura? quem é você? onde estou?  ", 0, 0),  //5
             new Falas("Calma, calmaaaa vou te explicar tudo.  ", 1, 0),  //6
@@ -106,7 +106,7 @@ public class talks : MonoBehaviour
             {
                 if (frase.Length >= 0)
                 {
-                    pos += Time.deltaTime * 20f;
+                    pos += Time.deltaTime * 40f;
                     if (Convert.ToInt32(pos) < frase.Length)
                     {
                         texto.text = frase.ToString().Substring(0, Convert.ToInt32(pos));
@@ -121,6 +121,7 @@ public class talks : MonoBehaviour
                                 tempTalked[i] = -1;
                         }
                     }
+                    /*
                     else
                     {
                         thePos = 0;
@@ -154,7 +155,7 @@ public class talks : MonoBehaviour
                             falando = false;
                             StartCoroutine(animBottom(2));
                         }
-                    }
+                    }*/
                 }
             }
             if (!falando)
@@ -224,6 +225,40 @@ public class talks : MonoBehaviour
         }
     }
 
+    public void Pular()
+    {
+        int thePos = 0;
+        bool found = false;
+        while (thePos < toTalk.Length && !found)
+        {
+            if (toTalk[thePos] >= 0)
+            {
+                frase = falas[toTalk[thePos]].fala;
+                personagem = falas[toTalk[thePos]].personagem;
+                int thePos2 = 0;
+                bool found2 = false;
+                while (thePos2 < tempTalked.Length && !found2)
+                {
+                    if (tempTalked[thePos2] < 0)
+                    {
+                        tempTalked[thePos2] = toTalk[thePos];
+                        found2 = true;
+                    }
+                    thePos2++;
+                }
+                toTalk[thePos] = -1;
+                pos = 0;
+                found = true;
+                delayToExec = 0f;
+            }
+            thePos++;
+        }
+        if (!found)
+        {
+            falando = false;
+            StartCoroutine(animBottom(2));
+        }
+    }
 
     IEnumerator animBottom(int time)
     {

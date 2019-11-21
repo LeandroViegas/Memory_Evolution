@@ -8,7 +8,7 @@ public class trovão : MonoBehaviour {
     float time;
 	// Use this for initialization
 	void Start () {
-        time = Random.Range(5f,10f);
+        time = Random.Range(5f,8f);
 	}
 	
 	// Update is called once per frame
@@ -18,8 +18,9 @@ public class trovão : MonoBehaviour {
         if(time <= 0)
         {
             GameObject raioObject = Instantiate(raio,transform);
+            raioObject.GetComponent<SpriteRenderer>().sortingOrder = -32766;
+            time = Random.Range(5f, 8f);
             Destroy(raioObject, 0.5f);
-            time = Random.Range(10f, 20f);
         }
 	}
 }

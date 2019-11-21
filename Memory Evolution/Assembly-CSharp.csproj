@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Scenes Controllers\Rua\Falas.cs" />
     <Compile Include="Assets\Scripts\Usability\buttonClick.cs" />
     <Compile Include="Assets\Scripts\Usability\Generator\CardGenerator.cs" />
+    <Compile Include="Assets\Scripts\Usability\Generator\LifeGenerator.cs" />
     <Compile Include="Assets\Scripts\Usability\Generator\ObjectGenerator.cs" />
     <Compile Include="Assets\Scripts\Usability\Generator\RandomGenerator.cs" />
     <Compile Include="Assets\Scripts\Usability\life.cs" />
