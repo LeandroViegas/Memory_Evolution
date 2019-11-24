@@ -31,10 +31,10 @@ public class Tambor : MonoBehaviour {
             else
                 color -= 255 * timer * 40 * Time.deltaTime;
             spriteRenderer.color = new Color(ColorCal(255f), ColorCal(color), ColorCal(color));
-            if (timer >= 0.5f)
+            if (timer >= 1.5f)
             {
                 if (Enemy != null)
-                    Enemy.GetComponent<Actions>().Damage(80);
+                    Enemy.GetComponent<Actions>().Damage(40);
                 Explosion();
             }
                 
@@ -48,8 +48,9 @@ public class Tambor : MonoBehaviour {
 
     void Explosion()
     {
-        Instantiate(esplosao,transform.position,transform.rotation);
+        GameObject esplosao1 = Instantiate(esplosao,transform.position,transform.rotation);
         Destroy(gameObject);
+        Destroy(esplosao1, 5f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

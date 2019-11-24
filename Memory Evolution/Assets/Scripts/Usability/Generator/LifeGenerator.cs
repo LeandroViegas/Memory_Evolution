@@ -11,6 +11,7 @@ public class LifeGenerator : MonoBehaviour {
     int maxLifes = 10;
     int generatedLifes = 0;
     int vivo = 0;
+    public bool able = true;
     // Use this for initialization
     void Start()
     {
@@ -20,30 +21,33 @@ public class LifeGenerator : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (timer > 0)
-            timer -= Time.deltaTime;
-        else
-            timer = 0;
-        vivo = 0;
-        foreach (GameObject aLife in lifes)
-            if (aLife)
-                vivo++;
-        if (timer <= 0 && vivo < 3 && generatedLifes < maxLifes && FindObjectOfType<CardGenerator>().vivo > 0)
+        if (able)
         {
-            bool end = false;
-            for (int i = 0; i < lifes.Length && !end; i++)
+            if (timer > 0)
+                timer -= Time.deltaTime;
+            else
+                timer = 0;
+            vivo = 0;
+            foreach (GameObject aLife in lifes)
+                if (aLife)
+                    vivo++;
+            if (timer <= 0 && vivo < 3 && generatedLifes < maxLifes && FindObjectOfType<CardGenerator>().vivo > 0)
             {
-                if (!lifes[i])
+                bool end = false;
+                for (int i = 0; i < lifes.Length && !end; i++)
                 {
-                    int pos = Random.Range(0, transform.childCount);
-                    transform.GetChild(pos).GetComponent<ObjectGenerator>().objeto = life;
-                    GameObject child = transform.GetChild(pos).GetComponent<ObjectGenerator>().GenerateObject();
-                    generatedLifes++;
-                    lifes[i] = child;
-                    end = true;
+                    if (!lifes[i])
+                    {
+                        int pos = Random.Range(0, transform.childCount);
+                        transform.GetChild(pos).GetComponent<ObjectGenerator>().objeto = life;
+                        GameObject child = transform.GetChild(pos).GetComponent<ObjectGenerator>().GenerateObject();
+                        generatedLifes++;
+                        lifes[i] = child;
+                        end = true;
+                    }
                 }
+                timer = 5f;
             }
-            timer = 5f;
         }
     }
 }

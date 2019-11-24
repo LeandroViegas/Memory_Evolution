@@ -11,9 +11,8 @@ public class barrier1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        cardGenerator card = FindObjectOfType<cardGenerator>();
-        CartaoPerfuradoController[] cartao = FindObjectsOfType<CartaoPerfuradoController>();
-        if (card.generated >= card.maxGenerate && !(cartao.Length >= 1))
+        CardGenerator cardG = FindObjectOfType<CardGenerator>();
+        if (cardG.vivo <= 0 && cardG.generatedCards >= cardG.maxCards)
             Destroy(gameObject);
     }
 }

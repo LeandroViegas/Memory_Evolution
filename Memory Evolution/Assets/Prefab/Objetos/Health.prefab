@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616096996938800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.01, y: -1.77, z: 0}
+  m_LocalPosition: {x: 19.99, y: 1.3299999, z: 0}
   m_LocalScale: {x: 1.6847982, y: 1.6847982, z: 1.6847982}
   m_Children:
   - {fileID: 4756353295908908}
@@ -127,10 +127,10 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 0
-  m_Color: {r: 0.134956, g: 0.2924528, b: 0.0731132, a: 1}
-  m_Intensity: 100.51
-  m_Range: 3.1
-  m_SpotAngle: 30
+  m_Color: {r: 0.29156283, g: 0.9811321, b: 0.4132515, a: 1}
+  m_Intensity: 9.52
+  m_Range: 4.84
+  m_SpotAngle: 37
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -149,7 +149,7 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 15
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -351,7 +351,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.504717, g: 1, b: 0.56238246, a: 1}
+      maxColor: {r: 0, g: 1, b: 0.6845896, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
