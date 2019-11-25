@@ -1722,7 +1722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -62.819996, y: -22.672}
+  m_AnchoredPosition: {x: -62.819996, y: -21}
   m_SizeDelta: {x: 38.65, y: 8.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &486810567
@@ -1737,7 +1737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: e5e0e350b3e6ffe49bde1ee8a79e7bf2, type: 2}
-  m_Color: {r: 0, g: 0.9921569, b: 0.5803922, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.58431387, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1757,7 +1757,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Izuna
+  m_Text: Player
 --- !u!222 &486810568
 CanvasRenderer:
   m_ObjectHideFlags: 0
