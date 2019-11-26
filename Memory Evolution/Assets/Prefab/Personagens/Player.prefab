@@ -165,7 +165,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1342209551627482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 0.89, z: 0}
+  m_LocalPosition: {x: -25.35, y: 0.17, z: 0}
   m_LocalScale: {x: 1.2250586, y: 1.2250586, z: 1.2250586}
   m_Children:
   - {fileID: 4739204994595106}
@@ -429,6 +429,7 @@ MonoBehaviour:
     facedRight: 0
     inControl: 1
   combatStats:
+    atack: 1
     damageRemaining: 0
     attackPower: 0
     defense: 0
@@ -437,7 +438,7 @@ MonoBehaviour:
     team1: 1
     team2: 0
   collision:
-    collision: 1
+    collision: 0
 --- !u!114 &114846175924927958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -451,6 +452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magePrefab: {fileID: 1481484560029320, guid: 428cbd6550015c9469b44ca81d51cec3, type: 2}
   datas: {fileID: 0}
+  vivo: 1
   bulletVelocity: 10
   atackRemaining: 0
   inAtack: 0

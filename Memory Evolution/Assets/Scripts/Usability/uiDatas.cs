@@ -14,6 +14,10 @@ public class uiDatas : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Transform barra = transform.Find("datas").Find("life").Find("barrinha").GetComponent<Transform>();
-        barra.localScale = new Vector3(1 * Player.GetComponent<Datas>().principais.health / Player.GetComponent<Datas>().principais.maxHealth, barra.localScale.y, barra.localScale.z);
-	}
+        if(Player)
+            barra.localScale = new Vector3(1 * Player.GetComponent<Datas>().principais.health / Player.GetComponent<Datas>().principais.maxHealth, barra.localScale.y, barra.localScale.z);
+        else
+            barra.localScale = new Vector3(0, barra.localScale.y, barra.localScale.z);
+
+    }
 }

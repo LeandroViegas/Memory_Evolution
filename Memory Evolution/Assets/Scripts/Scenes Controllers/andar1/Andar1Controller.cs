@@ -7,9 +7,13 @@ public class Andar1Controller : MonoBehaviour {
 
     public GameObject[] barriers;
     public Steps[] steps;
+    int vidas = 3;
     public CardGenerator cardGenerator;
     public MongosseteGenerator mongosseteGenerator;
     public int inimigosVivos;
+    public GameObject[] spawners;
+    public GameObject playerPrefab;
+    public GameObject player;
 
     public class Steps
     {
@@ -35,6 +39,19 @@ public class Andar1Controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(!player)
+        {
+            bool ver = false;
+            for (int i = 0; i < steps.Length && !ver; i++)
+                if (steps[i].beginned && steps[i].finished)
+                {
+                    player = Instantiate(playerPrefab);
+                    player.transform.position = new Vector3(spawners[i].transform.position.x, spawners[i].transform.position.y, spawners[i].transform.position.z);
+                    FindObjectOfType<CameraFollow>().Target = player.transform;
+                    ver = true;
+                    vidas--;
+                }
+        }
         if (!barriers[0])
         {
             steps[0].beginned = true;

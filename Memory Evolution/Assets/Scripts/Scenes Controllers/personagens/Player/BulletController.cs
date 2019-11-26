@@ -18,22 +18,37 @@ public class BulletController : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Datas>() != null && available)
+        {
             if (collision.GetComponent<Datas>().team.team2 == true)
+            {
                 if (collision.GetComponent<Actions>() != null)
                 {
                     collision.GetComponent<Actions>().Damage(20);
-                    Destroy(gameObject);
-                }           
+                    available = false;
+                    Destroy(gameObject, 0.09f);
+                }
+            }
+            if(collision.GetComponent<Datas>().collision.collision)
+                Destroy(gameObject, 0.09f);
+        }
+                      
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.GetComponent<Datas>() != null && available)
+        {
             if (collision.GetComponent<Datas>().team.team2 == true)
+            {
                 if (collision.GetComponent<Actions>() != null)
                 {
                     collision.GetComponent<Actions>().Damage(20);
-                    Destroy(gameObject);
+                    available = false;
+                    Destroy(gameObject, 0.09f);
                 }
+            }
+            if (collision.GetComponent<Datas>().collision.collision)
+                Destroy(gameObject, 0.09f);
+        }
     }
 }
