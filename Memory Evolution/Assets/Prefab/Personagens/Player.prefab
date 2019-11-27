@@ -165,7 +165,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1342209551627482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.35, y: 0.17, z: 0}
+  m_LocalPosition: {x: -23.58, y: 0.01, z: 0}
   m_LocalScale: {x: 1.2250586, y: 1.2250586, z: 1.2250586}
   m_Children:
   - {fileID: 4739204994595106}
@@ -452,7 +452,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magePrefab: {fileID: 1481484560029320, guid: 428cbd6550015c9469b44ca81d51cec3, type: 2}
   datas: {fileID: 0}
-  vivo: 1
   bulletVelocity: 10
   atackRemaining: 0
   inAtack: 0
@@ -582,7 +581,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 32767
   m_Sprite: {fileID: 21300000, guid: d79636d6f8ee1234aa98af1ef5a7f2d3, type: 3}
-  m_Color: {r: 0.030668855, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.80392164, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
