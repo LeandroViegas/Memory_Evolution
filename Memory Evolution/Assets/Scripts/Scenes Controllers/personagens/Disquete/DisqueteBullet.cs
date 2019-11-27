@@ -23,7 +23,7 @@ public class DisqueteBullet : MonoBehaviour {
             {
                 if (collision.GetComponent<Actions>() != null)
                 {
-                    collision.GetComponent<Actions>().Damage(20);
+                    collision.GetComponent<Actions>().Damage(10);
                     available = false;
                     Destroy(gameObject, 0.09f);
                 }
@@ -42,7 +42,7 @@ public class DisqueteBullet : MonoBehaviour {
             {
                 if (collision.GetComponent<Actions>() != null)
                 {
-                    collision.GetComponent<Actions>().Damage(20);
+                    collision.GetComponent<Actions>().Damage(10);
                     available = false;
                     Destroy(gameObject, 0.09f);
                 }

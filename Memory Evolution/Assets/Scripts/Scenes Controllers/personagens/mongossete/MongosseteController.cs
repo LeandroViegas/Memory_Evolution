@@ -27,6 +27,7 @@ public class MongosseteController : MonoBehaviour
     {
         dados = GetComponent<Datas>();
         rg2d = GetComponent<Rigidbody2D>();
+        DestinationGenerator();
     }
 
     // Update is called once per frame
@@ -57,7 +58,7 @@ public class MongosseteController : MonoBehaviour
                 temporarySoco = null;
             }
         }
-
+        
         if (wallCollision)
         {
             DestinationGenerator();
@@ -74,7 +75,7 @@ public class MongosseteController : MonoBehaviour
         }
         if (Enemy != null)
         {
-            rg2d.MovePosition(Vector2.MoveTowards(transform.position, Enemy.transform.position, Time.deltaTime * 4.2f));
+            rg2d.MovePosition(Vector2.MoveTowards(transform.position, Enemy.transform.position, Time.deltaTime * 3.7f));
             if (timeToAtack <= 0)
             {
                 Socar();
@@ -120,6 +121,8 @@ public class MongosseteController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.GetComponent<BulletController>())
+            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision.gameObject.GetComponent<Collider2D>());
         if (collision.gameObject.GetComponent<Datas>())
             if (collision.gameObject.GetComponent<Datas>().team.player)
             {
@@ -134,6 +137,8 @@ public class MongosseteController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (collision.gameObject.GetComponent<BulletController>())
+            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision.gameObject.GetComponent<Collider2D>());
         if (collision.gameObject.GetComponent<Datas>())
             if (collision.gameObject.GetComponent<Datas>().team.player)
             {

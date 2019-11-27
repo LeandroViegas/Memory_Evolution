@@ -30,6 +30,7 @@ public class CartaoPerfuradoController : MonoBehaviour
     {
         dados = transform.Find("Sprite").GetComponent<Datas>();
         rg2d = GetComponent<Rigidbody2D>();
+        DestinationGenerator();
     }
 
 
@@ -118,6 +119,32 @@ public class CartaoPerfuradoController : MonoBehaviour
         if (collision.GetComponent<Datas>() != null)
             if (collision.GetComponent<Datas>().team.team1 == true)
                 Enemy = collision.gameObject;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<BulletController>())
+            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision.gameObject.GetComponent<Collider2D>());
+        if (collision.gameObject.GetComponent<Datas>())
+            if (collision.gameObject.GetComponent<Datas>().team.player)
+            {
+                Enemy = collision.gameObject;
+                inAtack = true;
+            }
+        if (collision.GetComponent<BulletController>())
+        {
+            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision.gameObject.GetComponent<Collider2D>());
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Datas>())
+            if (collision.gameObject.GetComponent<Datas>().team.player)
+            {
+                Enemy = null;
+                inAtack = false;
+            }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

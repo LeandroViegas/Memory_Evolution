@@ -33,9 +33,9 @@ public class Andar1Controller : MonoBehaviour {
 	void Start () {
         morto = false;
         steps = new[] {
-            new Steps(true, true),
-            new Steps(true, true),
-            new Steps(true, false)
+            new Steps(false, false),
+            new Steps(false, false),
+            new Steps(false, false)
         };
 	}
 	

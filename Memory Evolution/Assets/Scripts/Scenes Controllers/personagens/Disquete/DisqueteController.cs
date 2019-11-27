@@ -27,6 +27,7 @@ public class DisqueteController : MonoBehaviour {
     void Start () {
         dados = GetComponent<Datas>();
         rg2d = GetComponent<Rigidbody2D>();
+        DestinationGenerator();
     }
 	
 	// Update is called once per frame
@@ -77,7 +78,7 @@ public class DisqueteController : MonoBehaviour {
         if (dados.combatStats.damageRemaining <= 0)
         {
             dados.combatStats.damageRemaining = Random.Range(1f, 3f);
-            Vector2 direction = Enemy.transform.position;
+            Vector2 direction = (Vector2)((Enemy.transform.position - transform.position));
             direction.Normalize();
 
             GameObject bullet = (GameObject)Instantiate(
@@ -88,7 +89,7 @@ public class DisqueteController : MonoBehaviour {
             Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<CapsuleCollider2D>());
             Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<CircleCollider2D>());
             Destroy(bullet, 0.8f);
-            bullet.GetComponent<Rigidbody2D>().velocity = direction * 40f;
+            bullet.GetComponent<Rigidbody2D>().velocity = direction * 20f;
             bullet.GetComponent<DisqueteBullet>().available = true;
         }
         rg2d.MovePosition(Vector2.MoveTowards(transform.position, Enemy.transform.position, Time.deltaTime * 2f));
@@ -106,10 +107,43 @@ public class DisqueteController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.GetComponent<BulletController>())
+            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision.gameObject.GetComponent<Collider2D>());
         if (collision.GetComponent<Datas>() != null)
             if (collision.GetComponent<Datas>().team.team1 == true)
                 Enemy = collision.gameObject;
+        if (collision.GetComponent<BulletController>())
+        {
+            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision.gameObject.GetComponent<Collider2D>());
+        }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<BulletController>())
+            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision.gameObject.GetComponent<Collider2D>());
+        if (collision.gameObject.GetComponent<Datas>())
+            if (collision.gameObject.GetComponent<Datas>().team.player)
+            {
+                Enemy = collision.gameObject;
+                inAtack = true;
+            }
+        if (collision.GetComponent<BulletController>())
+        {
+            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision.gameObject.GetComponent<Collider2D>());
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Datas>())
+            if (collision.gameObject.GetComponent<Datas>().team.player)
+            {
+                Enemy = null;
+                inAtack = false;
+            }
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -120,7 +154,7 @@ public class DisqueteController : MonoBehaviour {
             else
                 wallCollision = true;
         }
-        if (collision.gameObject.GetComponent<CartaoPerfuradoController>() != null)
+        if (collision.gameObject.GetComponent<DisqueteController>() != null)
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
     }
 }
