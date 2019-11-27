@@ -125,7 +125,7 @@ public class CartaoPerfuradoController : MonoBehaviour
         if (collision.gameObject.GetComponent<Datas>() != null)
         {
             if (!collision.gameObject.GetComponent<Datas>().collision.collision)
-                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
+                Physics2D.IgnoreCollision(GetComponent<CapsuleCollider2D>(), collision.gameObject.GetComponent<Collider2D>());
             else
                 wallCollision = true;
         } 

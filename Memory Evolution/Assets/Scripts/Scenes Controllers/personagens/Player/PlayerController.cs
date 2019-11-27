@@ -30,9 +30,13 @@ public class PlayerController : MonoBehaviour
         if (datas.combatStats.damageRemaining > 0f)
             datas.combatStats.damageRemaining -= Time.deltaTime;
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-
+ 
         if (datas.principais.health <= 0)
-            Destroy(gameObject);
+        {
+            FindObjectOfType<Andar1Controller>().morto = true;
+            gameObject.SetActive(false);
+        }
+            
 
         if (datas.principais.inControl)
         {

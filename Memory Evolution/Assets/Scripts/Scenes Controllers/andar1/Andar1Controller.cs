@@ -7,12 +7,12 @@ public class Andar1Controller : MonoBehaviour {
 
     public GameObject[] barriers;
     public Steps[] steps;
-    int vidas = 3;
+    public int vidas = 3;
+    public bool morto;
     public CardGenerator cardGenerator;
     public MongosseteGenerator mongosseteGenerator;
     public int inimigosVivos;
     public GameObject[] spawners;
-    public GameObject playerPrefab;
     public GameObject player;
 
     public class Steps
@@ -30,6 +30,7 @@ public class Andar1Controller : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        morto = false;
         steps = new[] {
             new Steps(false, false),
             new Steps(false, false),
@@ -39,35 +40,40 @@ public class Andar1Controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(!player)
+        if(morto && vidas > 0)
         {
-            bool ver = false;
-            for (int i = 0; i < steps.Length && !ver; i++)
-                if (steps[i].beginned && steps[i].finished)
+            for (int i = 0; i < steps.Length ; i++)
+                if (steps[i].beginned && !steps[i].finished)
                 {
-                    player = Instantiate(playerPrefab);
+                    player.SetActive(true);
+                    morto = false;
                     player.transform.position = new Vector3(spawners[i].transform.position.x, spawners[i].transform.position.y, spawners[i].transform.position.z);
-                    FindObjectOfType<CameraFollow>().Target = player.transform;
-                    ver = true;
+                    player.GetComponent<Datas>().principais.health = player.GetComponent<Datas>().principais.maxHealth;
+                    player.GetComponent<Datas>().principais.inControl = true;
                     vidas--;
                 }
         }
+
         if (!barriers[0])
         {
             steps[0].beginned = true;
             cardGenerator.able = true;
             steps[0].finished = false;
         }
+
         if (cardGenerator.maxCards < cardGenerator.generatedCards && cardGenerator.vivo <= 0)
         {
             steps[0].finished = true;
-            Destroy(barriers[1]);
+            barriers[1].SetActive(false);
         }
+
         if (!barriers[2])
         {
+            barriers[1].SetActive(true);
             steps[1].beginned = true;
             mongosseteGenerator.able = true;
         }
+
         if(steps[0].beginned && !steps[0].finished)
             inimigosVivos = cardGenerator.maxCards - cardGenerator.generatedCards + cardGenerator.vivo;
         if (steps[1].beginned && !steps[1].finished)

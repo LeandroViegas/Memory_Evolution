@@ -22,6 +22,5 @@ public class CameraFollow : MonoBehaviour
                 Debug.Log("Target não encontrado");
                 warning += 1;
             }
-             
     }
 }
