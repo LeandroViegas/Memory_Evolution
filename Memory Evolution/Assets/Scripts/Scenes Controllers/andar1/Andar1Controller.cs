@@ -11,6 +11,7 @@ public class Andar1Controller : MonoBehaviour {
     public bool morto;
     public CardGenerator cardGenerator;
     public MongosseteGenerator mongosseteGenerator;
+    public DisqueteGenerator disqueteGenerator;
     public int inimigosVivos;
     public GameObject[] spawners;
     public GameObject player;
@@ -32,9 +33,9 @@ public class Andar1Controller : MonoBehaviour {
 	void Start () {
         morto = false;
         steps = new[] {
-            new Steps(false, false),
-            new Steps(false, false),
-            new Steps(false, false)
+            new Steps(true, true),
+            new Steps(true, true),
+            new Steps(true, false)
         };
 	}
 	
@@ -74,9 +75,24 @@ public class Andar1Controller : MonoBehaviour {
             mongosseteGenerator.able = true;
         }
 
-        if(steps[0].beginned && !steps[0].finished)
+        if (mongosseteGenerator.maxMongossetes < mongosseteGenerator.generatedMongossetes && mongosseteGenerator.vivo <= 0)
+        {
+            steps[1].finished = true;
+            barriers[3].SetActive(false);
+        }
+
+        if (!barriers[4])
+        {
+            barriers[3].SetActive(true);
+            steps[2].beginned = true;
+            disqueteGenerator.able = true;
+        }
+
+        if (steps[0].beginned && !steps[0].finished)
             inimigosVivos = cardGenerator.maxCards - cardGenerator.generatedCards + cardGenerator.vivo;
         if (steps[1].beginned && !steps[1].finished)
             inimigosVivos = mongosseteGenerator.maxMongossetes - mongosseteGenerator.generatedMongossetes + mongosseteGenerator.vivo;
+        if (steps[2].beginned && !steps[2].finished)
+            inimigosVivos = disqueteGenerator.maxDisquetes - disqueteGenerator.generatedDisquetes + disqueteGenerator.vivo;
     }
 }

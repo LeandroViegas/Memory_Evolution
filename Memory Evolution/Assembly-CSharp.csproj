@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Scenes Controllers\andar1\Andar1Controller.cs" />
     <Compile Include="Assets\Scripts\Scenes Controllers\andar1\barrier1.cs" />
     <Compile Include="Assets\Scripts\Scenes Controllers\andar1\barrier2.cs" />
+    <Compile Include="Assets\Scripts\Scenes Controllers\andar1\barrier3.cs" />
     <Compile Include="Assets\Scripts\Scenes Controllers\ChangeScene.cs" />
     <Compile Include="Assets\Scripts\Scenes Controllers\Entrada\EntradaController.cs" />
     <Compile Include="Assets\Scripts\Scenes Controllers\Entrada\EntradaTrigger1.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\Scripts\Usability\buttonClick.cs" />
     <Compile Include="Assets\Scripts\Usability\EnemyPanel.cs" />
     <Compile Include="Assets\Scripts\Usability\Generator\CardGenerator.cs" />
+    <Compile Include="Assets\Scripts\Usability\Generator\DisqueteGenerator.cs" />
     <Compile Include="Assets\Scripts\Usability\Generator\Life2Generator.cs" />
     <Compile Include="Assets\Scripts\Usability\Generator\LifeGenerator.cs" />
     <Compile Include="Assets\Scripts\Usability\Generator\MongosseteGenerator.cs" />
