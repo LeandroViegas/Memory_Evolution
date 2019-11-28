@@ -62,25 +62,45 @@ public class talks : MonoBehaviour
             new Falas("Você se teletransportou para a década de 40 após do trovão que te atingiu.  ", 1, 0),  //7
             new Falas("Oqueee? mas por que isso aconteceu comigo?  ", 0, 0), //8,
             new Falas("UÈÈÈ!!! como eu vou saber?  ", 1, 0),  //9
-            new Falas("irônia do destino sei la ou coisa parecida.  ", 1, 0),  //10
+            new Falas("ironia do destino sei lá ou coisa parecida.  ", 1, 0),  //10
             new Falas("Não tem como explicar oque aconteceu eu só to aqui pra te ajudar...  ", 1, 0),  //11
             new Falas("Ata beleza muuito obrigado!!!  ", 0, 0),  //12
-            new Falas("Por nada, entre naquele prédio e tente encontrar as peças que se perderam do seu computador  ", 1, 0),  //13
-            new Falas("para que então você possa sair daqui, a cada andar você encontrará varios inimigos diferentes  ", 1, 0),  //14
-            new Falas(" toma aqui está um poder mágico para que você possa se defender desses inimigos.  ", 1, 0),  //15
-            new Falas("hahahaha, foda!!!  ", 0, 0),  //16
-            new Falas("Agora entre no prédio e la te darei mais informações sobre seus inimigos habilidades, força e tals só vai la men. ", 1, 0),  //17
-            new Falas("Espere só tem uma coisa que não entendi ainda, porque tenho que procurar peças de computador?  ", 0, 0),  //18
-            new Falas("Ai minha placa mãe é por isso que eu quero extermina a raça humana. ", 1, 0),  //19
-            new Falas("Taa vamo la. ", 1, 0),  //20
-            new Falas("Após o trovão ter atingido seu computador ele te teletransportou para cá também. ", 1, 0),  //21
-            new Falas("essas peças estão dentro deste prédio e em décadas diferentes.  ", 1, 0),  //22
-            new Falas("a cada andar as décadas mudam e seus inimigos também.  ", 1, 0),  //23
-            new Falas("eles vão ficando mais poderosos e mais difíceis de eliminar e são exatamente três peças e sem elas você não sai daqui.  ", 1, 0),  //24
-            new Falas("por quê é preciso arrumar seu computador. ", 1, 0),  //25
-            new Falas("então chegue até o fim com as três peças pois seu computador estará te esperando lá. ", 1, 0),  //26
-            new Falas("entendeu agora verme humano? ", 1, 0),  //27
+            new Falas("Por nada" , 1, 0),  //13
+            new Falas("Entre naquele prédio laranja e tente encontrar as peças que se perderam do seu computador  ", 1, 0),  //14
+            new Falas("para que então você possa sair daqui. A cada andar você encontrará varios inimigos diferentes  ", 1, 0),  //15
+            new Falas(" toma aqui está um poder mágico para que você possa se defender desses inimigos.  ", 1, 0),  //16
+            new Falas("hahahaha, foda!!!  ", 0, 0),  //17
+            new Falas("Agora entre no prédio e lá te darei mais informações sobre seus inimigos habilidades, força e tals só vai la men. ", 1, 0),  //18
+            new Falas("Espere só tem uma coisa que não entendi ainda, porque tenho que procurar peças de computador?  ", 0, 0),  //19
+            new Falas("Ai minha placa mãe é por isso que eu quero extermina a raça humana. ", 1, 0),  //20
+            new Falas("Ta ok, vamos la. ", 1, 0),  //21
+            new Falas("Após o trovão ter atingido seu computador ele te teletransportou para cá também. ", 1, 0),  //22
+            new Falas("essas peças estão dentro deste prédio e em décadas diferentes.  ", 1, 0),  //23
+            new Falas("a cada andar as décadas mudam e seus inimigos também.  ", 1, 0),  //24
+            new Falas("eles vão ficando mais poderosos e mais difíceis de eliminar e são exatamente três códigos e sem elas você não sai daqui.  ", 1, 0),  //25
+            new Falas("por quê é preciso arrumar seu computador. ", 1, 0),  //26
+            new Falas("então chegue até o fim com as três peças pois seu computador estará te esperando lá. ", 1, 0),  //27
+            new Falas("entendeu agora verme humano? ", 1, 0),  //28
+            new Falas("Entendi ok!!? ", 0, 0),  //29
+            new Falas("Na primeira sala estão os cartões perfurados eram o meio de incluir dados e comandos nas máquinas  ", 1, 0),  //30
+            new Falas("A habilidade deles são saltos que te causam dano    ", 1, 0),  //31
+            new Falas("Então apenas desvie desses saltos e use o poder mágico que te dei para destrui-los.  ", 1, 0),  //32
+            new Falas("O que foi isso? Eu morri? ", 0, 0),  //33
+            new Falas("kkkk tava assistindo minha novela e até esqueci de te avisar que tem bombas surpresas por ai tome cuidado com isso também.  ", 1, 0),  //34
+            new Falas("'_'  OK! ", 0, 0),  //35
+            new Falas("Na segunda sala foram inseridos os mongossetes  ", 1, 0),  //36
+            new Falas("Eles são baseados nas fitas cassetes, um padrão de fita magnética para gravação de áudio.  ", 1, 0),  //37
+            new Falas("A habilidade deles são puxar com suas fitas magnéticas e dar socos com um dano considerável  ", 1, 0),  //38
+            new Falas("Mantenha distância deles e você conseguira mata-los.  ", 1, 0),  //39
+            new Falas("Na terceira sala são os disquetes. é um tipo de disco de armazenamento magnético fino e flexível.  ", 1, 0),  //40
+            new Falas("eles tem como habilidade atirar mines disquetes que te perfuram. tome cuidado!!!  ", 1, 0),  //41
+            new Falas("Bom chegou a hora do Bóss, esse é o ramac foi um computador comercial desenvolvido pela IBM em 1960  ", 1, 0),  //42
+            new Falas("Foi o primeiro que utilizou uma unidade de disco magnético com uma cabeça de leitura móvel  ", 1, 0),  //43
+            new Falas("Ele tem como habilidade tacar bombas que podem te cegar por alguns segundos tome cuidado com isso. Boa sorte!!!  ", 1, 0),  //44
         };
+
+       
+
         toTalk = new int[100];
         for (int i = 0; i < toTalk.Length; i++)
             toTalk[i] = -1;
@@ -156,8 +176,8 @@ public class talks : MonoBehaviour
                             StartCoroutine(animBottom(2));
                         }
                     }*/
-                }
-            }
+    }
+}
             if (!falando)
             {
                 thePos = 0;

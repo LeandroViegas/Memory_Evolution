@@ -14,7 +14,7 @@ public class Falas : MonoBehaviour {
 	void Update () {
         if(executed == false)
         {
-            for(int i = 2; i <= 27; i++)
+            for(int i = 2; i <= 28; i++)
                 FindObjectOfType<talks>().Falar(i);
             executed = true;
         }

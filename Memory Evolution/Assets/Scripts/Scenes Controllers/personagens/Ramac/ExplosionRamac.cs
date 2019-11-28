@@ -8,6 +8,8 @@ public class ExplosionRamac : MonoBehaviour {
     bool explosion = false;
     GameObject Enemy = null;
     float time = 0.5f;
+    float timer = 0f;
+    float radius  = 0;
     // Use this for initialization
     void Start () {
 		
@@ -16,12 +18,15 @@ public class ExplosionRamac : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Enemy != null && !explosion && time > 0f)
+        if (Enemy != null && !explosion && time > 0f && timer < 2f)
         {
-            Enemy.GetComponent<Actions>().Damage(20);
+            Enemy.GetComponent<Actions>().Damage(10);
             explosion = true; 
         }
         time -= Time.deltaTime;
+        timer += Time.deltaTime;
+        radius += Time.deltaTime / 4.71f * 10f;
+        GetComponent<CircleCollider2D>().radius = radius;
     }
 
      private void OnTriggerEnter2D(Collider2D collision)
