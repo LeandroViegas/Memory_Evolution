@@ -51,8 +51,8 @@ public class Andar1Controller : MonoBehaviour {
                     player.transform.position = new Vector3(spawners[i].transform.position.x, spawners[i].transform.position.y, spawners[i].transform.position.z);
                     player.GetComponent<Datas>().principais.health = player.GetComponent<Datas>().principais.maxHealth;
                     player.GetComponent<Datas>().principais.inControl = true;
-                    vidas--;
                 }
+            vidas--;
         }
 
         if (!barriers[0])

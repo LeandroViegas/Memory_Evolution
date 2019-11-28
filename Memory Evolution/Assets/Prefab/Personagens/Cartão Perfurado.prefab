@@ -88,7 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4064142772479578}
   - component: {fileID: 212200143116423674}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sombra
   m_TagString: Untagged
   m_Icon: {fileID: 0}

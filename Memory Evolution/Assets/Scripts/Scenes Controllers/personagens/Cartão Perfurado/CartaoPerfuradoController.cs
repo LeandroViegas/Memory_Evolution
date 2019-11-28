@@ -5,8 +5,6 @@ using UnityEngine;
 public class CartaoPerfuradoController : MonoBehaviour
 {
 
-
-
     // Atack Booleans
     public bool inAtack = false;
     bool AlertAtack = false;
@@ -127,14 +125,7 @@ public class CartaoPerfuradoController : MonoBehaviour
             Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision.gameObject.GetComponent<Collider2D>());
         if (collision.gameObject.GetComponent<Datas>())
             if (collision.gameObject.GetComponent<Datas>().team.player)
-            {
                 Enemy = collision.gameObject;
-                inAtack = true;
-            }
-        if (collision.GetComponent<BulletController>())
-        {
-            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision.gameObject.GetComponent<Collider2D>());
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

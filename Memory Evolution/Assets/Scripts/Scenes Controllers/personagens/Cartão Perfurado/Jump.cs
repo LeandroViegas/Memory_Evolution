@@ -20,7 +20,8 @@ public class Jump : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {    
+    {
+        sombra.GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder - 1;
         if (atackRemaining > 0)
             atackRemaining -= Time.deltaTime;
         if (distance > 0.8f)
@@ -37,7 +38,6 @@ public class Jump : MonoBehaviour
             distance = distance - (Time.deltaTime * 2);
         sombra.transform.localScale = new Vector3(distance * 2, sombra.transform.localScale.y);
         transform.localPosition = new Vector2(0.031f, (distance * 1.9f) - 0.8f);
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
